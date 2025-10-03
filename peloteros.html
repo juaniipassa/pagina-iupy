@@ -1,0 +1,365 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peloteros - Catálogo</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        body {
+            background: #FFD6E7;
+            font-family: 'Comic Sans MS', 'Fredoka', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header img {
+            width: 180px;
+            margin-top: 15px;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+        .filters {
+             display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #ED1E79;
+            margin: 10px;
+        }
+        .filters button {
+             padding: 10px 20px;
+            border: none;
+            background-color: #ED1E79;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        .filters button:hover {
+            background-color: #A5D608;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 🔹 columnas más angostas */
+            gap: 15px;
+            padding: 15px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 320px; /* 🔹 altura fija más compacta */
+            width: 280px;  /* 🔹 ancho fijo */
+            margin: auto;
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-content h3 {
+            color: #ED1E79;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .card-content p {
+            margin: 4px 0;
+            font-size: 0.95rem;
+        }
+        .card-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 0 15px;
+        }
+        .card-buttons a {
+            text-decoration: none;
+            color: white;
+            background: #ED1E79;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        .card-buttons a.consulta {
+           background: #A5D608;
+        }
+        .card-buttons a:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Peloteros</h1>
+        <div class="filters">
+            <button onclick="filterItems('todos')">Todos</button>
+            <button onclick="filterItems('chico')">Chicos</button>
+            <button onclick="filterItems('mediano')">Medianos</button>
+            <button onclick="filterItems('grande')">Grandes</button>
+            <button onclick="filterItems('agua')">Agua</button>
+            <button onclick="filterItems('mecanico')">Mecanico</button>
+        </div>
+    </header>
+
+    <div class="grid" id="peloterosGrid">
+        <!-- Ejemplo de item -->
+        <div class="card" data-tipo="chico">
+            <img src="img/3+4/1f3ad616-3d3b-4afd-a15c-70707568fdba.jpg" alt="Pelotero Chico">
+            <div class="card-content">
+                <h3>Pelotero 3*4 (3x4M)</h3>
+                <p>Precio: $35000</p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+        <!-- Repetir con otros peloteros -->
+           <div class="card" data-tipo="chico">
+            <img src="img/aventura 3.jpg" alt="Pelotero Chico">
+            <div class="card-content">
+                <h3>Pelotero Chico (2x2m)</h3>
+                <p>Precio: $15,000</p>
+                <p>Duración: 4 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/5493434155474" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+          <div class="card" data-tipo="mediano">
+            <img src="img/pelotero1.jpg" alt="Pelotero mediano">
+            <div class="card-content">
+                <h3>Pelotero Chico (2x2m)</h3>
+                <p>Precio: $15,000</p>
+                <p>Duración: 4 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+          <div class="card" data-tipo="grande">
+            <img src="img/pelotero1.jpg" alt="Pelotero grande">
+            <div class="card-content">
+                <h3>Pelotero Chico (2x2m)</h3>
+                <p>Precio: $15,000</p>
+                <p>Duración: 4 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+          <div class="card" data-tipo="agua">
+            <img src="img/pelotero1.jpg" alt="Pelotero agua">
+            <div class="card-content">
+                <h3>Pelotero Chico (2x2m)</h3>
+                <p>Precio: $15,000</p>
+                <p>Duración: 4 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+        <div class="card" data-tipo="mecanico">
+            <img src="img/relopj (1).jpg" alt="Pelotero mecanico">
+            <div class="card-content">
+                <h3>Pelotero Mecanico (5x5M)</h3>
+                <p>Precio: $80,000</p>
+                <p>Duración: 2 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+            <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+
+             <div class="card" data-tipo="">
+            <img src="img/pelotero1.jpg" alt="Pelotero ">
+            <div class="card-content">
+                <h3></h3>
+                <p></p>
+                <p>Duración: 3 horas</p>
+            </div>
+            <div class="card-buttons">
+                <a href="#" class="consulta">Consultar</a>
+                <a href="https://wa.me/549XXXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterItems(tipo) {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                if (card.getAttribute('data-tipo') === tipo || tipo === 'todos') {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
