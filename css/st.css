@@ -8,16 +8,13 @@
 body, html {
     height: 100%;
     width: 100%;
-    background-color: #FFD6E7;
 }
 
 .container {
     display: grid;
-    grid-template-columns: repeat(3, 400px); 
-    justify-content: center; /* centra horizontalmente */
-    align-content: center;   /* centra verticalmente */
-    gap: 20px;
-    min-height: 100vh;       /* asegura que ocupe toda la altura */
+    grid-template-columns: repeat(auto-fit, 280px); /* máximo 3 columnas de 280px */
+    justify-content: center; /* centra la fila si hay menos de 3 elementos */
+    gap: 20px; /* separación entre columnas y filas */
     padding: 20px;
 }
 
@@ -32,7 +29,7 @@ body, html {
     background-position: center;
     border-radius: 15px;
     text-decoration: none;
-    color: rgb(248, 2, 187);
+    color: white;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
